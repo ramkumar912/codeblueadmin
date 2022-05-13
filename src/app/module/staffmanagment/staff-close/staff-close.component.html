@@ -1,0 +1,139 @@
+<app-header></app-header>
+<div class="app-loader" *ngIf="loader"></div>
+<app-popup ></app-popup>
+<div class="content-wrapper" style="min-height: 486px;">
+  <div class="app-content"></div>
+  <section class="content">
+    <div class="app-staff-management-dashboard"></div>
+    <div class="container-fluid">
+      <!-- Info boxes -->
+      <div class="row">
+        <!-- fix for small devices only -->
+        <div class="clearfix hidden-md-up"></div>
+
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <div class="row">
+                <div class="col-12">
+                  <div class="row">
+
+                    <div class="col-8">
+                      <div class="detail-left mt-2">
+                        <div class="date_picker picker">
+                          <p>Start Date</p>
+                          <input angular-mydatepicker class="form-control picker_icon ptr" id="sod"
+                            placeholder="Select Start Date" name="dob" [(ngModel)]="start_date"
+                            [options]="myDatePickerOptions_sod" #dp="angular-mydatepicker"
+                            (click)="dp.toggleCalendar()" (dateChanged)="onFromDateChanged($event)"/>
+                        </div>
+                        <div class="date_picker picker">
+                          <p>End Date</p>
+                          <input angular-mydatepicker class="form-control picker_icon ptr" id="eod"
+                            placeholder="Select End Date" name="eod" [(ngModel)]="end_date"
+                            [options]="myDatePickerOptions_eod" #dp1="angular-mydatepicker"
+                            (click)="dp1.toggleCalendar()" (dateChanged)="onTodatechanged($event)"/>
+                        </div>
+                        <div class="go-btn">
+                          <button  (click)="go()"  class="btn btn-info btn-flat">Go!</button>
+                          <button  (click)="reset()" class="btn btn-info btn-flat">Reset</button>
+                      </div>
+                      <div class="export">
+                          <img src="assets/images/excel.png"   (click)="export()"  alt="Excel" title="Excel" class="ptr"> 
+                       
+                      </div>
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class="detail-right">
+                          <div class="card-tools">
+                              <div class="input-group input-group-sm" style="width: 250px;">
+                                  <input type="text" name="table_search"
+                                      class="form-control float-right" placeholder="Search" [(ngModel)]="search">
+
+                                  <div class="input-group-append">
+                                      <button type="submit" class="btn btn-default" (click)="search_table()" ><i
+                                              class="fas fa-search"></i></button>
+                                  </div>
+
+                              </div>
+                          </div>
+                        
+                      </div>
+                      
+                  </div>
+                  </div>
+                </div>
+              </div>
+
+              <div *ngIf="downloadexcel" style="height: 0;">
+                <iframe width="10px" height="10px" frameBorder="0" [src]="urlsafe"></iframe>
+            </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body table-responsive" style="height: 560px">
+              <table class="table table-head-fixed text-nowrap table-bordered">
+                <thead>
+                  <tr>
+                    <th>Staff ID</th>
+                    <th>Staff Name</th>
+                    <th>Patient ID</th>
+                    <th>Patient Name</th>
+                    <th>Assign Date</th>
+                    <th>Close Date</th>
+                    <th>Assign Time</th>
+                    <th>Close Time</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    *ngFor="let list of staffcloselist | paginate: { itemsPerPage: page_per_size, currentPage: activePage, totalItems: total_item };let i=index;">
+                    <td> {{list.staff_uid}}</td>
+                    <td> {{list.staff}}</td>
+                    <td> {{list.patient_uid}}</td>
+                    <td> {{list.patient}}</td>                   
+                    <td> {{list.assign_date}}</td>
+                    <td> {{list.end_date}}</td>
+                    <td> {{list.assign_time}}</td>
+                    <td> {{list.stime}}</td>
+                    
+
+
+
+                    <td class="text-left py-0 align-middle">
+                      <div class="btn-group btn-group-sm">
+                        <a class="btn btn-primary" routerLink="/staff-close-edit/{{list.id}}">
+                          <i class="fas fa-pencil-alt"></i>
+                        </a>
+                        <a  class="btn btn-info"  (click)="close_view(list.id)">
+                          <i class="fas fa-eye"> </i>
+                        </a>
+
+                      </div>
+                    </td>
+
+                  </tr>
+                </tbody>
+
+                <tbody *ngIf="staffcloselist==null || staffcloselist.length==0">
+                  <tr>
+                    <td class="text-center" colspan="9">No data found</td>
+                  </tr>
+                </tbody>
+              </table>
+              <pagination-controls class="pagination pac_pagenation" (pageChange)="page = getServerData($event)"></pagination-controls> 
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+
+      </div>
+      <!-- /.row -->
+
+
+    </div>
+    <!--/. container-fluid -->
+  </section>
+</div>

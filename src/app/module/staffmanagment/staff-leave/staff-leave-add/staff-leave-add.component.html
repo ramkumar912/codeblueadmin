@@ -1,0 +1,113 @@
+<app-header></app-header>
+<div class="app-loader" *ngIf="loader"></div>
+<app-popup (sendCount)='display($event)'></app-popup>
+
+
+<div class="content-wrapper" style="min-height: 486px;">
+    <div class="app-content"></div>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <!-- Info boxes -->
+            <div class="row">
+                <!-- fix for small devices only -->
+                <div class="clearfix hidden-md-up"></div>
+
+                <div class="col-12">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title"> Staff Assign</h3>
+
+                            <div class="card-tools">
+                                <!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button> -->
+                                <button type="button" class="btn btn-tool" routerLink="/staff-managment"><i
+                                        class="fas fa-times"></i></button>
+                            </div>
+                        </div>
+                        <!-- /.card-header -->
+                        <form [formGroup]="staffleaveForm" (ngSubmit)="staffleave(staffleaveForm.value)">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <!-- /.form-group -->
+                                    <div class="form-group">
+                                        <label>Staff ID</label>
+                                        <input type="text" id="employeeid" class="form-control" name="staffid" formControlName="staffid"  disabled>                       
+                                    </div>
+                                    <!-- /.form-group -->
+                                </div>
+                                <div class="col-md-6">
+                                    <!-- /.form-group -->
+                                    <div class="form-group">
+                                        <label>Patient ID</label>
+                                        <input type="text" id="patientid" class="form-control" name="patientid"  formControlName="patientid" disabled>                       
+                                    </div>
+                                    <!-- /.form-group -->
+                                </div>
+                              
+                              
+                                
+                                <div class="col-md-6">
+                                    <!-- /.form-group -->
+                                    <div class="form-group picker_dob">
+                                        <label>From Date </label>
+                                        <input angular-mydatepicker class="form-control" id="fromdate"
+                                        placeholder="Select From date" name="fromdate" [(ngModel)]="fromdate" formControlName="fromdate" [options]="myDatePickerOptions" #dp="angular-mydatepicker" (click)="dp.toggleCalendar()" />
+                                    </div>
+                                    <p class="has-error" *ngIf="!staffleaveForm.controls['fromdate'].valid&&isSubmitted">Please select from date
+                                    </p>
+                                    <!-- /.form-group -->
+                                </div>
+                                 
+                                <div class="col-md-6">
+                                    <!-- /.form-group -->
+                                    <div class="form-group picker_dob">
+                                        <label>To Date </label>
+                                        <input angular-mydatepicker class="form-control" id="todate"
+                                        placeholder="Select To Date" name="todate" [(ngModel)]="todate" formControlName="todate" [options]="myDatePickerOptions" #dp1="angular-mydatepicker" (click)="dp1.toggleCalendar()"  />
+                                    </div>
+                                    <p class="has-error" *ngIf="!staffleaveForm.controls['todate'].valid&&isSubmitted">Please select to date                                    </p>
+                                    <!-- /.form-group -->
+                                </div>
+                                <!-- /.col -->
+                                
+                               
+                                <!-- /.col -->
+                                <!-- /.col -->
+                                 <div class="col-md-6">
+                                    <!-- /.form-group -->
+                                    <div class="form-group">
+                                        <label>Remarks </label>
+                                        <textarea class="form-control" formControlName="remarks"></textarea>                                            
+                                        <!-- <input type="date" class="form-control" name="dob"> -->
+                                    </div>
+                                    <!-- /.form-group -->
+                                </div>
+                               
+                             
+                            </div>
+                            <!-- /.row -->
+                            <div class="row">
+                                <div class="col-12 p-0 text-center">
+                                    <button class="btn btn-block btn-primary login_btn ptr" type="submit">Submit </button>
+                                </div>
+                            </div>
+                        </div>
+                        </form>
+                        <!-- /.card-body -->
+                        <div class="card-footer">
+                            Above Details creation for staff Details only
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.row -->
+
+
+        </div>
+        <!--/. container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>

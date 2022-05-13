@@ -1,0 +1,25 @@
+.card-title{
+    font-weight: 600;
+}
+
+.form-group{
+    margin-bottom: 1.5rem;
+}
+
+.has-error{
+    top: 64px ;
+}
+.login_btn {
+    display: inline-block;
+    /* width: inherit !important; */
+    border-radius: 0px;
+    text-transform: uppercase;
+    width: auto !important;
+}
+
+.isclose{
+    position: absolute;
+    right: 10px;
+    top: 2px;
+    height: 18px;
+}

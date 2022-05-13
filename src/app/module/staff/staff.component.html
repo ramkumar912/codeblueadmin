@@ -1,0 +1,149 @@
+<div class="app-loader" *ngIf="loader"></div>
+<app-header></app-header>
+
+
+<div class="content-wrapper" style="min-height: 486px;">
+    <div class="app-content"></div>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <!-- Info boxes -->
+            <div class="row">
+                <!-- fix for small devices only -->
+                <div class="clearfix hidden-md-up"></div>
+
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                          
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="row">
+
+                                      <div class="col-8">
+                                        <div class="detail-left mt-2">
+                                            <div class="date_picker picker">
+                                                <p>From Date</p>
+                                                <input class="form-control picker_icon ptr" id="sod"
+                                                placeholder="Select Start Date" name="dob" [(ngModel)]="start_date" [options]="myDatePickerOptions_sod" angular-mydatepicker name="fromdate"  #dp="angular-mydatepicker" (click)="dp.toggleCalendar()" (dateChanged)="onFromDateChanged($event)" />
+                                            </div>
+                                            <div class="date_picker picker">
+                                                <p>End Date</p>
+
+                                                
+                                                <input class="form-control picker_icon ptr" id="eod"
+                                                placeholder="Select End Date" name="eod" [(ngModel)]="end_date" [options]="myDatePickerOptions_eod" angular-mydatepicker name="enddate" #dp1="angular-mydatepicker" (click)="dp1.toggleCalendar()" (dateChanged)="onTodatechanged($event)" />
+                                            </div>
+                                            <div class="go-btn">
+                                                <button  (click)="go()" class="btn btn-info btn-flat">Go!</button>
+                                                <button  (click)="reset()" class="btn btn-info btn-flat">Reset</button>
+                                            </div>
+                                            <div class="export">
+                                                <img src="assets/images/excel.png" (click)="export()" alt="Excel" title="Excel" class="ptr"> 
+                                             
+                                            </div>
+                                        </div>
+                                      </div>
+                                      <div class="col-4">
+                                        <div class="detail-right">
+                                            <div class="card-tools">
+                                                <div class="input-group input-group-sm" style="width: 250px;">
+                                                    <input type="text" name="table_search"
+                                                        class="form-control float-right" placeholder="Search" [(ngModel)]="search" name="search" title="Search" >
+
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-default"  (click)="search_table()"><i
+                                                                class="fas fa-search"></i></button>
+                                                    </div>
+                                                    <!-- <input type="text" placeholder="Search" [(ngModel)]="search" name="search" title="Search" class="search_input">
+                                                    <button class="go_btn" (click)=search_table()>Go</button> -->
+                                                </div>
+                                            </div>
+                                            <a class="btn  bg-gradient-primary btn-flat float-left  add"
+                                                routerLink="/staff-add">Add</a>
+                                        </div>
+                                        
+                                    </div>
+                                    </div>    
+                                </div>
+                            </div>
+
+                            <div *ngIf="downloadexcel" style="height: 0;">
+                                <iframe width="10px" height="10px" frameBorder="0" [src]="urlsafe"></iframe>
+                            </div>
+
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body table-responsive " style="height: 547px">
+                            <table class="table table-head-fixed text-nowrap table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Staff ID</th>
+                                        <th>Name</th>
+                                        <th>Mobile No</th>
+                                        <th>Email</th>
+                                        <th>Qualification</th>
+                                        <th>DOB</th>
+                                        <th>Address</th>
+                                        <th>City</th>
+                                        <th>State</th>
+                                        <th>Gender</th>
+                                        <th>Action</th>
+
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let list of stafflist | paginate: { itemsPerPage: page_per_size, currentPage: activePage, totalItems: total_item };let i=index;">
+                                        <td>{{list.uid}}</td>
+                                        <td>{{list.fname}}</td>
+                                        <td>{{list.mobileno}}</td>
+                                        <td>{{list.emailid}}</td>
+                                        <td>{{list.qualification}}</td>
+                                        <td>{{list.dob}}</td>
+                                        <td>{{list.address_1}}</td>
+                                        <td>{{list.city}}</td>
+                                        <td>{{list.state}}</td>
+                                        <td>{{list.gender}}</td>
+                                       
+
+
+
+
+                                       
+                                        <td class="text-left py-0 align-middle">
+                                            <div class="btn-group btn-group-sm">
+                                                <a  (click)="staff_view(list.id, 'edit')" class="btn btn-primary"><i class="fas fa-pencil-alt text-white"></i></a>
+                                                <a (click)="staff_view(list.id, 'view')"  class="btn btn-info"><i class="fas fa-eye text-white"></i></a>
+                                                
+                                            </div>
+                                        </td>
+                                    </tr>
+                                   
+
+
+                                </tbody>
+
+                                <tbody *ngIf="stafflist==null || stafflist.length==0">
+                                    <tr>
+                                        <td class="text-center" colspan="11">No data found</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <pagination-controls class="pagination pac_pagenation" (pageChange)="page = getServerData($event)"></pagination-controls>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+
+            </div>
+            <!-- /.row -->
+
+
+        </div>
+        <!--/. container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>

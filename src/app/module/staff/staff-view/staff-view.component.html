@@ -1,0 +1,139 @@
+<div class="app-loader" *ngIf="loader"></div>
+<app-header></app-header>
+
+
+<div class="content-wrapper" style="min-height: 486px;">
+    <div class="app-content"></div>
+    <section class="content">
+        <div class="col-12">
+            <div class="row">
+                <div class="col-md-3">
+
+                    <!-- Profile Image -->
+                    <div class="card card-primary card-outline">
+                      <div class="card-body box-profile">
+                        <div class="text-center" *ngIf="profile!=''">
+                          <img class="profile-user-img img-fluid img-circle" src="{{profile}}" alt="User profile picture">
+                        </div>
+                        <div class="text-center" *ngIf="profile==''">
+                          <img class="profile-user-img img-fluid img-circle" src="assets/images/person.png" alt="User profile picture">
+                        </div>
+                        <h3 class="profile-username text-center">{{name}}</h3>
+        
+                        
+        
+                        <ul class="list-group list-group-unbordered mb-3">
+                          <li class="list-group-item">
+                            <b>Mobile No</b> <a class="float-right">{{mobileno}}</a>
+                          </li>
+                          <li class="list-group-item">
+                            <b>DOB </b> <a class="float-right">{{dob}}</a>
+                          </li>
+                          <li class="list-group-item">
+                            <b>Gender</b> <a class="float-right">{{gender}}</a>
+                          </li>
+                          <li class="list-group-item">
+                            <b>Experience</b> <a class="float-right">{{experience}}</a>
+                          </li>
+                        </ul>
+        
+                        <a href="#" class="btn btn-primary btn-block" routerLink="/staff"><b>Back</b></a>
+                      </div>
+                      <!-- /.card-body -->
+                    </div>
+                 
+                  </div>
+                  <div class="col-md-9">
+                         <!-- /.card -->
+        
+                    <!-- About Me Box -->
+                    <div class="card card-primary">
+
+                        <div class="card-header">
+                            <h3 class="card-title">{{name}} Details</h3>
+
+                            <div class="card-tools">
+                                <!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button> -->
+                                <button type="button" class="btn btn-tool" routerLink="/staff"><i
+                                        class="fas fa-times"></i></button>
+                            </div>
+                        </div>
+                       
+
+                        
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                          <strong><i class="fas fa-book mr-1"></i> Qualification</strong>
+          
+                          <p class="text-muted">
+                            {{qualification}}
+                          </p>
+          
+                          <hr>
+          
+                          <strong><i class="fas fa-map-marker-alt mr-1"></i> Address</strong>
+          
+                          <p class="text-muted">{{address}}</p>
+          
+                          <hr>
+          
+                          <strong><i class="fas fa-envelope"></i> Email</strong>
+                            <p>{{email}}</p>
+                          <!-- <p class="text-muted">
+                            <span class="tag tag-danger">UI Design</span>
+                            <span class="tag tag-success">Coding</span>
+                            <span class="tag tag-info">Javascript</span>
+                            <span class="tag tag-warning">PHP</span>
+                            <span class="tag tag-primary">Node.js</span>
+                          </p> -->
+          
+                          <hr>
+          
+                          <strong><i class="far fa-file-alt mr-1"></i> Remarks</strong>
+          
+                          <p class="text-muted">{{remarks}}</p>
+                        </div>
+                        <!-- /.card-body -->
+
+                        
+                      </div>
+                      <!-- /.card -->
+                      <div class="col-12 p-0">
+                        <div class="card card-primary">
+                          <div class="card-header">
+                            <div class="card-title">
+                             Certificates
+                            </div>
+                          </div>
+                          <div class="card-body">
+                            <div class="row">
+                              <div class="col-sm-2" *ngIf="certificate1!=''">
+                                <a href="{{certificate1}}" data-toggle="lightbox" data-title="Academic" data-gallery="gallery">
+                                  <img src="{{certificate1}}" class="img-fluid mb-2" alt="Academic">
+                                </a>
+                              </div>
+                              <div class="col-sm-2" *ngIf="certificate2!=''">
+                                <a href="{{certificate2}}" data-toggle="lightbox" data-title="Course black" data-gallery="gallery">
+                                  <img src="{{certificate2}}" class="img-fluid mb-2" alt="Course">
+                                </a>
+                              </div>
+                              <div class="col-sm-2" *ngIf="certificate3!=''">
+                                <a href="{{certificate3}}" data-toggle="lightbox" data-title="Other" data-gallery="gallery">
+                                  <img src="{{certificate3}}" class="img-fluid mb-2" alt="Other">
+                                </a>
+                              </div>
+                             
+                             
+                         
+                              
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+            </div>
+        </div>
+
+      
+    </section>
+</div>

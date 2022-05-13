@@ -1,0 +1,116 @@
+
+<app-header></app-header>
+<div class="app-loader" *ngIf="loader"></div>
+<app-popup (sendCount)='display($event)'></app-popup>
+
+<div class="content-wrapper" style="min-height: 486px;">
+    <div class="app-content"></div>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <!-- Info boxes -->
+            <div class="row">
+                <!-- fix for small devices only -->
+                <div class="clearfix hidden-md-up"></div>
+
+                <div class="col-12">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title"> Staff Closing</h3>
+
+                            <div class="card-tools">
+                                <!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button> -->
+                                <button type="button" class="btn btn-tool" routerLink="/staff-close"><i
+                                        class="fas fa-times"></i></button>
+                            </div>
+                        </div>
+                        <!-- /.card-header -->
+                        <form [formGroup]="staffcloseForm" (ngSubmit)="staffclose(staffcloseForm.value)">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <!-- /.form-group -->
+                                    <div class="form-group">
+                                        <label>Staff ID</label>
+                                        <input type="text" id="staffid" class="form-control" name="staffid" formControlName="staffid" disabled>                       
+                                    </div>
+                                    <!-- /.form-group -->
+                                </div>
+                                <div class="col-md-6">
+                                    <!-- /.form-group -->
+                                    <div class="form-group">
+                                        <label>Patient ID</label>
+                                        <input type="text" id="patientid" class="form-control" name="patientid" formControlName="patientid" disabled>                       
+                                    </div>
+                                    <!-- /.form-group -->
+                                </div>
+                              
+                              
+                                
+                                <div class="col-md-6">
+                                    <!-- /.form-group -->
+                                    <div class="form-group picker_dob">
+                                        <label>Assign Date </label>
+                                        <input type="text" id="assign_date" class="form-control" name="assign_date"  [(ngModel)]="assign_date" formControlName="assign_date" disabled>    
+                                    
+                                    </div>
+                                 
+                                </div>
+                                 
+                                <div class="col-md-6">
+                                    <!-- /.form-group -->
+                                    <div class="form-group picker_dob">
+                                        <label>Close Date </label>
+                                        <input angular-mydatepicker class="form-control" id="end_date"
+                                        placeholder="Select Close Date" name="end_date" [(ngModel)]="end_date" formControlName="end_date" [options]="myDatePickerOptions" #dp="angular-mydatepicker" (click)="dp.toggleCalendar()"  (dateChanged)="onDateChanged($event)"/>
+                                     </div>
+                                     <p class="has-error" *ngIf="!staffcloseForm.controls['end_date'].valid&&isSubmitted">Please select close date
+                                    </p>
+                                </div>                           
+                                <div class="col-md-6">
+                                    <!-- /.form-group -->
+                                    <div class="form-group picker_clock">
+                                        <label>Close Time </label>
+                                        <input type="text" class="form-control" placeholder="Select close time" formControlName="stime" [(ngModel)]='stime' (click)="open($event)" >                                        
+                                     </div>
+                                     <p class="has-error" *ngIf="!staffcloseForm.controls['stime'].valid&&isSubmitted">Please select close time
+                                    </p>
+                                </div>
+                          
+                                <!-- /.col -->
+                                 <div class="col-md-6">
+                                    <!-- /.form-group -->
+                                    <div class="form-group">
+                                        <label>Remarks </label>
+                                        <textarea class="form-control" formControlName="remarks"></textarea>                         
+                                    </div>
+                                    <!-- /.form-group -->
+                                </div>
+                               
+                             
+                            </div>
+                            <!-- /.row -->
+                            <div class="row">
+                                <div class="col-12 p-0 text-center">
+                                    <button class="btn btn-block btn-primary login_btn ptr" type="submit">Update </button>
+                                </div>
+                            </div>
+                        </div>
+                        </form>
+                        <!-- /.card-body -->
+                        <div class="card-footer">
+                            Above Details creation for staff Close Details only
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.row -->
+
+
+        </div>
+        <!--/. container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>

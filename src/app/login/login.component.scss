@@ -1,0 +1,63 @@
+.login-page, .register-page {
+    -ms-flex-align: center;
+    align-items: center;
+    background-image: url("https://codebluehomecare.com/admin/assets/images/login1.jpg");
+    background-position: 100%;
+    background-repeat: no-repeat;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    height: 100vh;
+    -ms-flex-pack: center;
+    justify-content: center;
+    background-size: cover;
+}
+
+.card, .login-card-body, .register-card-body{
+    background-color: #8c8c8c1f;
+}
+
+.login-box, .register-box {
+    width: 500px;
+}
+
+input.form-control {
+    height: 48px;
+    border-radius: inherit !important;
+    border: inherit;
+}
+
+.input-group-text{
+    border-radius: inherit !important;
+    // border: inherit;
+}
+
+.input-group-text .fa, .fas{
+    color: #fff;
+}
+.login_btn{
+    color: #fff;
+    text-align: center;
+    margin: 0px auto;
+}
+.login_btn:hover{
+    color: #fff;
+}
+
+.pass_right{
+     padding-right: 50px;
+}
+
+.view_password{
+    float: left;
+    position: absolute;
+    max-width: 26px;
+    right: 44px;
+    top: 11px;
+    z-index: 9999;
+}
+.view_password img{
+    width: 100%;
+    cursor: pointer;
+}

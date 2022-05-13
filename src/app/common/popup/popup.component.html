@@ -1,0 +1,405 @@
+<div id="myModal" class="modal fade" role="dialog" *ngIf="is_modal_visible">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Logout</h4>
+                <button type="button" class="close" data-dismiss="modal" (click)="close()">&times;</button>
+
+            </div>
+            <div class="modal-body">
+                <p>Are you sure want to logout?</p>
+                <div class="form-group wid100 text-center ">
+                    <button type="submit" class="btn btn-primary log" (click)="logout()">Yes</button>
+                    <button type="submit" class="btn btn-primary log" (click)="close()">No</button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<div id="myModal" class="modal fade" role="dialog" *ngIf="is_modal_success_visible">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Success</h4>
+                <button type="button" class="close" data-dismiss="modal" (click)="common_close_modal()">&times;</button>
+
+            </div>
+            <div class="modal-body">
+                <p>{{is_success_data}}.</p>
+                <div class="form-group wid100 text-center ">
+                    <button type="submit" class="btn btn-primary log" (click)="common_close_modal()">OK</button>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<div id="myModal" class="modal fade" role="dialog" *ngIf="is_patient_view">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <!-- <div class="modal-header">
+                <h4 class="modal-title">{{is_patient_viewdata.fname}} Details</h4>
+                <button type="button" class="close" data-dismiss="modal" (click)="patient_view_close()">&times;</button>
+
+            </div> -->
+            <div class="modal-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr class="bg_black">
+                            <th colspan="2"> {{is_patient_viewdata.fname}} Patient Details</th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td>Name</td>
+                        <td>{{is_patient_viewdata.fname}}</td>
+                    </tr>
+                    <tr>
+                        <td>Gender</td>
+                        <td>{{is_patient_viewdata.gender}}</td>
+                    </tr>
+                    <tr>
+                        <td>Date of Joining</td>
+                        <td>12-10-2000</td>
+                    </tr>
+                    <tr>
+                        <td>Address</td>
+                        <td>{{is_patient_viewdata.address_1}}</td>
+                    </tr>
+                    <tr>
+                        <td>City</td>
+                        <td>{{is_patient_viewdata.city}}</td>
+                    </tr>
+                    <tr>
+                        <td>State</td>
+                        <td>{{is_patient_viewdata.state}}</td>
+                    </tr>
+                    <tr>
+                        <td>Pincode</td>
+                        <td>{{is_patient_viewdata.pincode}}</td>
+                    </tr>
+                </table>
+                <div class="form-group wid100 text-center ">
+                    <button type="submit" class="btn btn-primary log" (click)="patient_view_close()">Close</button>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<div id="myModal" class="modal fade" role="dialog" *ngIf="is_salary_view">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+        
+            <div class="modal-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr class="bg_black">
+                            <th colspan="2"> {{salary_data_view.staff}} salary Details</th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td>Staff Name & Id </td>
+                        <td>{{salary_data_view.staff}} - {{salary_data_view.staff_uid}}</td>
+                    </tr>
+                    <tr>
+                        <td>Patient Name & Id</td>
+                        <td>{{salary_data_view.patient}}- {{salary_data_view.patient_uid}}</td>
+                    </tr>
+                    <tr>
+                        <td>Service Type</td>
+                        <td>{{salary_data_view.servicetype}}</td>
+                    </tr>
+                    <tr>
+                        <td>Assign date</td>
+                        <td>{{salary_data_view.assign_date}}</td>
+                    </tr>
+                   
+                    <tr>
+                        <td>From Date</td>
+                        <td>{{salary_data_view.fromdate}}</td>
+                    </tr>
+                    <tr>
+                        <td>To Date</td>
+                        <td>{{salary_data_view.todate}}</td>
+                    </tr>
+                    <tr>
+                        <td>Assign Time</td>
+                        <td>{{salary_data_view.assign_time}}</td>
+                    </tr>
+                    <tr>
+                        <td>Close Time</td>
+                        <td>{{salary_data_view.stime}}</td>
+                    </tr>
+                    <tr>
+                        <td>Total Days</td>
+                        <td>{{salary_data_view.total_days}}</td>
+                    </tr>
+                    <tr>
+                        <td>Salary per day</td>
+                        <td>{{salary_data_view.salaryperday}}</td>
+                    </tr>
+                    <tr>
+                        <td>Total Salary</td>
+                        <td>{{salary_data_view.salary}}</td>
+                    </tr>
+                    <tr>
+                        <td>Remarks</td>
+                        <td>{{salary_data_view.remarks}}</td>
+                    </tr>
+                </table>
+                <div class="form-group wid100 text-center ">
+                    <button type="submit" class="btn btn-primary log" (click)="salary_view_close()">Close</button>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<div id="myModal" class="modal fade" role="dialog"   *ngIf="is_modal_success_text_visible" >
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Success</h4>
+                <button type="button" class="close" data-dismiss="modal"
+                    (click)="text_close_modal()">&times;</button>
+
+            </div>
+            <div class="modal-body">
+                <p>{{is_success_data}}.</p>
+                <div class="form-group wid100 text-center ">
+                    <button type="submit" class="btn btn-primary log" (click)="text_close_modal()">OK</button>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<div id="myModal" class="modal fade" role="dialog" *ngIf="is_error">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title error_bg">Error</h4>
+                <button type="button" class="close" data-dismiss="modal" (click)="error_close()">&times;</button>
+
+            </div>
+            <div class="modal-body">
+                <p>{{is_error_data}}.</p>
+                <div class="form-group wid100 text-center ">
+                    <button type="submit" class="btn btn-primary log" (click)="error_close()">OK</button>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<div id="myModal" class="modal fade" role="dialog" *ngIf="is_modal_staff_uploaderror">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title error_bg">Error</h4>
+                <button type="button" class="close" data-dismiss="modal"
+                    (click)="staffuploaderror_close()">&times;</button>
+
+            </div>
+            <div class="modal-body">
+                <p>Your upload format is only for JPG & PNG .</p>
+                <div class="form-group wid100 text-center ">
+                    <button type="submit" class="btn btn-primary log" (click)="staffuploaderror_close()">OK</button>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+<div id="myModal" class="modal fade" role="dialog" *ngIf="is_connection">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title ">Message</h4>
+                <button type="button" class="close" data-dismiss="modal" (click)="connection_close()">&times;</button>
+
+            </div>
+            <div class="modal-body">
+                <p>{{is_connection_data}}</p>
+                <div class="form-group wid100 text-center ">
+                    <button type="submit" class="btn btn-primary log" (click)="connection_close()">OK</button>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+
+<div id="myModal" class="modal fade" role="dialog" *ngIf="is_expense_view">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+         
+            <div class="modal-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr class="bg_black">
+                            <th colspan="2"> {{is_expense_viewdata.staff}} expense Details</th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td>Staff Name & ID</td>
+                        <td>{{is_expense_viewdata.staff}} - {{is_expense_viewdata.staff_uid}}</td>
+                    </tr>
+                    <tr>
+                        <td>Patient Name & ID</td>
+                        <td>{{is_expense_viewdata.patient}} - {{is_expense_viewdata.patient_uid}}</td>
+                    </tr>
+                    <tr>
+                        <td>Expense Date</td>
+                        <td>{{is_expense_viewdata.expense_date}}</td>
+                    </tr>
+                    <tr>
+                        <td>Expense Amount</td>
+                        <td>{{is_expense_viewdata.expense}}</td>
+                    </tr>
+                    
+                </table>
+                <div class="form-group wid100 text-center ">
+                    <button type="submit" class="btn btn-primary log" (click)="expense_view_close()">Close</button>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+<div id="myModal" class="modal fade" role="dialog" *ngIf="is_leave_view">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+         
+            <div class="modal-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr class="bg_black">
+                            <th colspan="2"> {{is_leave_viewdata.staff}} Leave Details</th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td>Staff Name & ID</td>
+                        <td>{{is_leave_viewdata.staff}} - {{is_leave_viewdata.staff_uid}}</td>
+                    </tr>
+                    <tr>
+                        <td>Patient Name & ID</td>
+                        <td>{{is_leave_viewdata.patient}} - {{is_leave_viewdata.patient_uid}}</td>
+                    </tr>
+                    <tr>
+                        <td>From Date</td>
+                        <td>{{is_leave_viewdata.fromdate}}</td>
+                    </tr>
+                    <tr>
+                        <td>To date </td>
+                        <td>{{is_leave_viewdata.todate}}</td>
+                    </tr>
+                    <tr>
+                        <td>Total Leave days </td>
+                        <td>{{is_leave_viewdata.total_days}}</td>
+                    </tr>
+                    
+                </table>
+                <div class="form-group wid100 text-center ">
+                    <button type="submit" class="btn btn-primary log" (click)="leave_view_close()">Close</button>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+<div id="myModal" class="modal fade" role="dialog" *ngIf="is_duty_close_view">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+         
+            <div class="modal-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr class="bg_black">
+                            <th colspan="2"> {{is_duty_close_viewdata.staff}} Close Details</th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td>Staff Name & ID</td>
+                        <td>{{is_duty_close_viewdata.staff}} - {{is_duty_close_viewdata.staff_uid}}</td>
+                    </tr>
+                    <tr>
+                        <td>Patient Name & ID</td>
+                        <td>{{is_duty_close_viewdata.patient}} - {{is_duty_close_viewdata.patient_uid}}</td>
+                    </tr>
+                    <tr>
+                        <td>Assign Time</td>
+                        <td>{{is_duty_close_viewdata.assign_time}}</td>
+                    </tr>
+                    <tr>
+                        <td>Close Time </td>
+                        <td>{{is_duty_close_viewdata.stime}}</td>
+                    </tr>
+                    <tr>
+                        <td>From Date</td>
+                        <td>{{is_duty_close_viewdata.assign_date}}</td>
+                    </tr>
+                    <tr>
+                        <td>Close date </td>
+                        <td>{{is_duty_close_viewdata.end_date}}</td>
+                    </tr>
+                   
+                    
+                </table>
+                <div class="form-group wid100 text-center ">
+                    <button type="submit" class="btn btn-primary log" (click)="duty_view_close()">Close</button>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+

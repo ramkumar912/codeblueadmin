@@ -1,0 +1,130 @@
+<div class="app-loader" *ngIf="loader"></div>
+<app-popup (sendCount)='display($event)'></app-popup>
+<app-header></app-header>
+
+
+<div class="content-wrapper" style="min-height: 486px;">
+    <div class="app-content"></div>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <!-- Info boxes -->
+            <div class="row">
+                <!-- fix for small devices only -->
+                <div class="clearfix hidden-md-up"></div>
+
+                <div class="col-12">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">{{tempname}} Patient Detail</h3>
+
+                            <div class="card-tools">
+                                <!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button> -->
+                                <button type="button" class="btn btn-tool" routerLink="/patient"><i
+                                        class="fas fa-times"></i></button>
+                            </div>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <form [formGroup]="patientForm" (ngSubmit)="patient(patientForm.value)"> 
+                            <div class="row">
+                           
+                                <div class="col-md-6" data-select2-id="29">
+                                    <div class="form-group">
+                                        <label>Name</label>
+                                        <input type="text" class="form-control" id="fname"
+                                            placeholder="Enter Patient Name" formControlName = "fname">
+                                    </div> 
+                                    <p class="has-error" *ngIf="!patientForm.controls['fname'].valid&&isSubmitted">Please enter patient name
+                                    </p>                       
+                                </div>
+                              
+                                <div class="col-md-6">                                   
+                                    <div class="form-group">
+                                        <label>Gender</label>
+                                        <select class="form-control" formControlName = "gender">
+                                            <option value="">Select Gender</option>
+                                            <option value="M">Male</option>
+                                            <option value="F">Female</option>
+                                        </select>
+                                    </div>   
+                                    <p class="has-error" *ngIf="!patientForm.controls['gender'].valid&&isSubmitted">Please Select gender
+                                    </p>                                
+                                </div> 
+
+                                <div class="col-md-6">                             
+                                    <div class="form-group picker_dob">
+                                        <label>Join Date</label>
+                                        <input angular-mydatepicker class="form-control" id="doj"
+                                        placeholder="Select Join date" name="doj" [(ngModel)]="doj" (dateChanged)="onDateChanged($event)" formControlName = "doj" [options]="myDatePickerOptions" #dp="angular-mydatepicker" (click)="dp.toggleCalendar()"  />
+                                    </div>  
+                                    <p class="has-error" *ngIf="!patientForm.controls['doj'].valid&&isSubmitted">Please select join date</p>                    
+                                </div>
+
+                                <div class="col-md-6">                                   
+                                    <div class="form-group">
+                                        <label>State</label>
+                                        <input type="text" class="form-control" id="state"
+                                            placeholder="Enter State" formControlName = "state">
+                                    </div>   
+                                    <p class="has-error" *ngIf="!patientForm.controls['state'].valid&&isSubmitted">Please enter state</p>                                              
+                                </div>
+                         
+                                <div class="col-md-6">                                 
+                                    <div class="form-group">
+                                        <label>City</label>
+                                        <input type="text"  formControlName = "city" class="form-control" id="city" placeholder="Enter City">
+                                    </div> 
+                                    <p class="has-error" *ngIf="!patientForm.controls['city'].valid&&isSubmitted">Please enter city</p>                                                                          
+                                </div>
+                   
+                                <div class="col-md-6">                                 
+                                    <div class="form-group">
+                                        <label>Pin code</label>
+                                        <input type="number" class="form-control" id="pincode"
+                                            placeholder="Enter Pin Code"  formControlName = "pincode">
+                                    </div> 
+                                    <p class="has-error" *ngIf="!patientForm.controls['pincode'].valid&&isSubmitted">Please enter pincode</p>                             
+                                </div>                            
+                           
+                                <div class="col-md-6">                                   
+                                    <div class="form-group">
+                                        <label>Address</label>
+                                        <textarea class="form-control" formControlName = "address_1" placeholder="Enter Address"></textarea>
+                                    </div>   
+                                    <p class="has-error top_level" *ngIf="!patientForm.controls['address_1'].valid&&isSubmitted">Please enter address</p>                            
+                                </div>
+                         
+                                <div class="col-md-6">                    
+                                    <div class="form-group">
+                                        <label>Remarks</label>
+                                        <textarea class="form-control" formControlName = "remarks" placeholder="Type here your Remarks"></textarea>
+                                    </div>                           
+                                </div>
+                        
+                            </div>
+                  
+                            <div class="row">
+                                <div class="col-12 p-0 text-center">
+                                    <button class="btn btn-block btn-primary login_btn ptr" type="submit">Update </button>
+                                </div>
+                            </div>
+                        </form>  
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="card-footer">
+                            Above Details Management for Patient Details only
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.row -->
+
+
+        </div>
+        <!--/. container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>

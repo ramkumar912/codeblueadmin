@@ -1,0 +1,176 @@
+<app-header></app-header>
+<div class="app-loader" *ngIf="loader"></div>
+<app-popup (sendCount)='display($event)'></app-popup>
+<div class="content-wrapper" style="min-height: 486px;">
+    <div class="app-content"></div>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <!-- Info boxes -->
+            <div class="row">
+                <!-- fix for small devices only -->
+                <div class="clearfix hidden-md-up"></div>
+
+                <div class="col-12">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title"> Staff Assign</h3>
+
+                            <div class="card-tools">
+                                <!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button> -->
+                                <button type="button" class="btn btn-tool" routerLink="/staff-managment"><i
+                                        class="fas fa-times"></i></button>
+                            </div>
+                        </div>
+                        <!-- /.card-header -->
+                        <form [formGroup]="staffassignForm" (ngSubmit)="staffassign(staffassignForm.value)">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <!-- /.form-group -->
+                                    <div class="form-group">
+                                        <label>Staff ID</label>
+                                        <select class="form-control" id="staffid" formControlName="staffid"
+                                                class="form-control" name="employeeid">
+                                                <option value="" disabled="disabled">Select</option>
+                                                <option *ngFor="let staff of staff_dropdown" [value]="staff.id">
+                                                    {{staff.uid}}- {{staff.fname}}
+                                                </option>
+                                            </select>
+                                                           
+                                    </div>
+                                    <p class="has-error" *ngIf="!staffassignForm.controls['staffid'].valid&&isSubmitted">Please select staffid</p>
+                                    <!-- /.form-group -->
+                                </div>
+                                <div class="col-md-6">
+                                    <!-- /.form-group -->
+                                    <div class="form-group">
+                                        <label>Patient ID</label>
+                                        <select class="form-control" id="patientid" formControlName="patientid"
+                                                class="form-control" name="patientid">
+                                                <option value="" disabled="disabled">Select</option>
+                                                <option *ngFor="let patient of patient_dropdown" [value]="patient.id">
+                                                    {{patient.uid}}- {{patient.fname}}
+                                                </option>
+                                            </select>
+                                      
+                                    </div>
+                                    <p class="has-error" *ngIf="!staffassignForm.controls['patientid'].valid&&isSubmitted">Please select patientid</p>
+                                    <!-- /.form-group -->
+                                </div>
+                                <div class="col-md-6">
+                                    <!-- /.form-group -->
+                                    <div class="form-group">
+                                        <label>Service Type</label>                                       
+                                        <select id="serive" class="form-control" formControlName = "servicetype">
+                                            <option value="">Select service type</option>
+                                            <option value="Nursing">Nursing</option>
+                                            <option value="Nursing Aided Service">Nursing Aided Service</option>
+                                        </select>                      
+                                    </div>
+                                    <p class="has-error" *ngIf="!staffassignForm.controls['servicetype'].valid&&isSubmitted">Please select service type</p>                                <!-- /.form-group -->
+                                </div>
+                                <div class="col-md-6">
+                                    <!-- /.form-group -->
+                                    <div class="form-group">
+                                        <label>Hour Format</label>
+                                        <select class="form-control" formControlName = "hourformat">
+                                            <option value="">Select the Format</option>
+                                            <option value="12 hours">12 hours</option>
+                                            <option value="24 hours">24 hours </option>
+
+                                        </select>                        
+                                    </div>
+                                    <p class="has-error" *ngIf="!staffassignForm.controls['hourformat'].valid&&isSubmitted">Please select hour format</p>
+                                    <!-- /.form-group -->
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <!-- /.form-group -->
+                                    <div class="form-group picker_dob">
+                                        <label>Job Assign Date </label>
+                                        <input angular-mydatepicker class="form-control" id="assign_date"
+                                        placeholder="Select Join Assign Date" name="assign_date" [(ngModel)]="adate" formControlName="assign_date" [options]="myDatePickerOptions" #dp="angular-mydatepicker" (click)="dp.toggleCalendar()"  [defaultMonth]="defaultMonth" />
+                                            
+                                        <!-- <input type="date" class="form-control" name="dob"> -->
+                                    </div>
+                                    <p class="has-error" *ngIf="!staffassignForm.controls['assign_date'].valid&&isSubmitted">Please select job assign date
+                                    </p>
+                                    <!-- /.form-group -->
+                                </div>
+                                <!-- /.col -->
+                                <div class="col-md-6">
+                                    <!-- /.form-group -->
+                                    <div class="form-group picker_clock">
+                                        <label>Job Assign Time </label>
+                                        <input type="text"  placeholder="Select Assign time" class="form-control" name="assign_time" formControlName = "assign_time"  (click)="open($event)">
+                                            
+                                        <!-- <input type="date" class="form-control" name="dob"> -->
+                                    </div>
+                                    <p class="has-error" *ngIf="!staffassignForm.controls['assign_time'].valid&&isSubmitted">Please select job assign time
+                                    </p>
+                                    <!-- /.form-group -->
+                                </div>
+                                    <!-- /.col -->
+                                    <div class="col-md-6">
+                                        <!-- /.form-group -->
+                                        <div class="form-group ">
+                                            <label>Company Cordinator </label>
+                                            <input type="text" class="form-control" name="coordinator" formControlName = "coordinator">
+                                                
+                                            <!-- <input type="date" class="form-control" name="dob"> -->
+                                        </div>
+                                        <p class="has-error" *ngIf="!staffassignForm.controls['coordinator'].valid&&isSubmitted">Please enter coordinator</p>
+                                        <!-- /.form-group -->
+                                    </div>
+                                    <div class="col-md-6">
+                                        <!-- /.form-group -->
+                                        <div class="form-group ">
+                                            <label>Patient Location </label>
+                                            <input type="text" class="form-control" name="location" formControlName = "location">
+                                                
+                                           
+                                        </div>
+                                        <p class="has-error" *ngIf="!staffassignForm.controls['location'].valid&&isSubmitted">Please enter location</p>
+                                        <!-- /.form-group -->
+                                    </div>
+                                <!-- /.col -->
+                                 <div class="col-md-6">
+                                    <!-- /.form-group -->
+                                    <div class="form-group">
+                                        <label>Remarks </label>
+                                        <textarea class="form-control"  formControlName = "remarks"></textarea>
+                                            
+                                        <!-- <input type="date" class="form-control" name="dob"> -->
+                                    </div>
+                                    <!-- /.form-group -->
+                                </div>
+                               
+                             
+                            </div>
+                            <!-- /.row -->
+                            <div class="row">
+                                <div class="col-12 p-0 text-center">
+                                    <button class="btn btn-block btn-primary login_btn ptr" type="submit">Submit </button>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        </form>
+                        <!-- /.card-body -->
+                        <div class="card-footer">
+                            Above Details creation for staff Assign Details only
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.row -->
+
+
+        </div>
+        <!--/. container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>

@@ -1,0 +1,271 @@
+<div class="app-loader" *ngIf="loader"></div>
+<app-popup (sendCount)='display($event)'></app-popup>
+<app-header></app-header>
+<div class="content-wrapper" style="min-height: 486px;">
+    <div class="app-content"></div>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <!-- Info boxes -->
+            <div class="row">
+                <!-- fix for small devices only -->
+                <div class="clearfix hidden-md-up"></div>
+
+                <div class="col-12">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title"> <span class="text-trans">{{tempname}}</span> Cordinator Detail Updates</h3>
+
+                            <div class="card-tools">
+                                <!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button> -->
+                                <button type="button" class="btn btn-tool" routerLink="/cordinator"><i
+                                        class="fas fa-times"></i></button>
+                            </div>
+                        </div>
+                        <!-- /.card-header -->
+                        <form [formGroup]="cordinatorForm" (ngSubmit)="cordinator(cordinatorForm.value)">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6" data-select2-id="29">
+                                        <div class="form-group">
+                                            <label>Name</label>
+                                            <input type="text" class="form-control" id="fname"
+                                                placeholder="Enter cordinator Name" formControlName = "fname">
+                                        </div>
+                                        <p class="has-error" *ngIf="!cordinatorForm.controls['fname'].valid&&isSubmitted">Please enter cordinator name
+                                        </p>
+                                        <!-- /.form-group -->
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-md-6">
+                                        <!-- /.form-group -->
+                                        <div class="form-group">
+                                            <label>Mobile No</label>
+                                            <input type="text" class="form-control" id="mobileno"
+                                                placeholder="Enter Mobile No" formControlName = "mobileno" maxlength="10" pattern="[1-9]{1}[0-9]{9}" onkeypress="return String.fromCharCode(event.charCode).match(/[0-9 ]/g) != null">
+                                        </div>
+                                        <p class="has-error" *ngIf="!cordinatorForm.controls['mobileno'].valid&&isSubmitted">Please enter Mobile No
+                                        </p>
+                                        <!-- /.form-group -->
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-md-6">
+                                        <!-- /.form-group -->
+                                        <div class="form-group">
+                                            <label>Email</label>
+                                            <input type="email" class="form-control" id="emailid"  formControlName = "emailid"
+                                                placeholder="Enter Email">
+                                        </div>
+                                        <p class="has-error" *ngIf="!cordinatorForm.controls['emailid'].valid&&isSubmitted">Please enter email id
+                                        </p>
+                                        <!-- /.form-group -->
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-md-6">
+                                        <!-- /.form-group -->
+                                        <div class="form-group">
+                                            <label>Qualification</label>
+                                            <input type="text" class="form-control" id="qualification"
+                                                placeholder="Enter Qualification" formControlName="qualification">
+                                        </div>
+                                        <p class="has-error" *ngIf="!cordinatorForm.controls['qualification'].valid&&isSubmitted">Please enter qualification
+                                        </p>
+                                        <!-- /.form-group -->
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-md-6">
+                                        <!-- /.form-group -->
+                                        <div class="form-group">
+                                            <label>Experience</label>
+                                            <input type="text" class="form-control" id="experience"
+                                                placeholder="Enter Experience"  formControlName="experience">
+                                        </div>
+                                        <p class="has-error" *ngIf="!cordinatorForm.controls['experience'].valid&&isSubmitted">Please enter experience
+                                        </p>
+                                        <!-- /.form-group -->
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-md-6">
+                                        <!-- /.form-group -->
+                                        <div class="form-group picker_dob">
+                                            <label>Date of Birth</label>
+                                            <input angular-mydatepicker class="form-control" id="dob"
+                                                placeholder="Select Date of Birth" name="dob" [(ngModel)]="dob"
+                                                [options]="myDatePickerOptions" #dp="angular-mydatepicker"
+                                                (click)="dp.toggleCalendar()" (dateChanged)="onDateChanged($event)"  formControlName="dob"/>
+
+                                            <!-- <input type="date" class="form-control" name="dob"> -->
+                                        </div>
+                                        <p class="has-error" *ngIf="!cordinatorForm.controls['dob'].valid&&isSubmitted">Please select Date of Birth
+                                        </p>
+                                        <!-- /.form-group -->
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-md-6">
+                                        <!-- /.form-group -->
+                                        <div class="form-group">
+                                            <label>Gender</label>
+                                            <select class="form-control" formControlName="gender">
+                                                <option value="">Select Gender</option>
+                                                <option value="M">Male</option>
+                                                <option value="F">Female</option>
+                                                <option value="T">Transgender</option>
+                                            </select>
+                                        </div>
+                                        <p class="has-error" *ngIf="!cordinatorForm.controls['gender'].valid&&isSubmitted">Please select Gender
+                                        </p>
+                                        <!-- /.form-group -->
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-md-6">
+                                        <!-- /.form-group -->
+                                        <div class="form-group">
+                                            <label>State</label>
+                                            <input type="text" class="form-control" id="state"
+                                                placeholder="Enter State"  formControlName="state">
+                                        </div>
+                                        <p class="has-error" *ngIf="!cordinatorForm.controls['state'].valid&&isSubmitted">Please enter state
+                                        </p>
+                                        <!-- /.form-group -->
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-md-6">
+                                        <!-- /.form-group -->
+                                        <div class="form-group">
+                                            <label>City</label>
+                                            <input type="text" class="form-control" id="city" placeholder="Enter  City" formControlName="city">
+                                        </div>
+                                        <p class="has-error" *ngIf="!cordinatorForm.controls['city'].valid&&isSubmitted">Please enter city
+                                        </p>
+                                        <!-- /.form-group -->
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-md-6">
+                                        <!-- /.form-group -->
+                                        <div class="form-group">
+                                            <label>Pin code</label>
+                                            <input type="number" class="form-control" id="pincode"
+                                                placeholder="Enter Pin Code" formControlName="pincode">
+                                        </div>
+                                        <p class="has-error" *ngIf="!cordinatorForm.controls['pincode'].valid&&isSubmitted">Please enter pincode
+                                        </p>
+                                        <!-- /.form-group -->
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-md-6">
+                                        <!-- /.form-group -->
+                                        <div class="form-group">
+                                            <label>Profile Image</label>
+                                            <div class="input-group">
+                                                <div class="custom-file">
+                                                    <input type="file"  (change)="profileChange($event)" class="custom-file-input" id="profile"  formControlName="file">
+                                                    <label class="custom-file-label" for="exampleInputFile" >Choose
+                                                        file</label>                                                       
+                                                </div>
+                                            </div>
+                                            <p class="img_edit" *ngIf="profile_file!=''">upload File:<a  href="{{profile_file}}" target="_blank">{{profile_file}}</a> </p>
+                                        </div>
+                                        <!-- /.form-group -->
+                                    </div>
+
+                                    <!-- /.col -->
+
+                                    <div class="col-md-6">
+                                        <!-- /.form-group -->
+                                        <div class="form-group">
+                                            <label>Academic certificate</label>
+                                            <div class="input-group z-0">
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" id="certificate" formControlName="certificate1" (change)="certificateChange1($event)" 
+                                                        multiple>
+                                                        <label class="custom-file-label" for="exampleInputFile" *ngIf="certificate1_name==''">Choose
+                                                            file</label>
+                                                            <label class="custom-file-label" for="exampleInputFile" *ngIf="certificate1_name!=''">{{certificate1_name}}</label>
+                                                </div>                                              
+                                            </div>
+                                            <p class="img_edit" *ngIf="certificate1!=''">upload File: <a  href="{{certificate1}}" target="_blank">{{certificate1}}</a> </p>
+                                        </div>
+                                        <!-- /.form-group -->
+                                    </div>
+                                    <div class="col-md-6">
+                                        <!-- /.form-group -->
+                                        <div class="form-group">
+                                            <label>Course Certificate</label>
+                                            <div class="input-group">
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" id="certificate"  formControlName="certificate2" (change)="certificateChange2($event)" 
+                                                        multiple>
+                                                        <label class="custom-file-label" for="exampleInputFile" *ngIf="certificate2_name==''">Choose
+                                                            file</label>
+                                                            <label class="custom-file-label" for="exampleInputFile" *ngIf="certificate2_name!=''">{{certificate2_name}}</label>
+                                                </div>
+                                            </div>
+                                            <p class="img_edit" *ngIf="certificate2!=''">upload File:<a  href="{{certificate2}}" target="_blank">{{certificate2}}</a> </p>
+                                        </div>
+                                        <!-- /.form-group -->
+                                    </div>
+                                    <div class="col-md-6">
+                                        <!-- /.form-group -->
+                                        <div class="form-group">
+                                            <label>Other Certificate</label>
+                                            <div class="input-group">
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" id="certificate"  formControlName="certificate3" (change)="certificateChange3($event)" 
+                                                        multiple>
+                                                        <label class="custom-file-label" for="exampleInputFile" *ngIf="certificate3_name==''">Choose
+                                                            file</label>
+                                                            <label class="custom-file-label" for="exampleInputFile" *ngIf="certificate3_name!=''">{{certificate3_name}}</label>
+                                                </div>
+
+                                            </div>
+                                            <p class="img_edit" *ngIf="certificate3!=''">upload File:<a  href="{{certificate3}}" target="_blank">{{certificate3}}</a> </p>
+                                        </div>
+                                        <!-- /.form-group -->
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-md-6">
+                                        <!-- /.form-group -->
+                                        <div class="form-group">
+                                            <label>Address</label>
+                                            <textarea class="form-control" formControlName="address_1"></textarea>
+                                        </div>
+                                        <p class="has-error textarea_top" *ngIf="!cordinatorForm.controls['address_1'].valid&&isSubmitted">Please enter address
+                                        </p>
+                                        <!-- /.form-group -->
+                                    </div>
+                                    <div class="col-md-6">
+                                        <!-- /.form-group -->
+                                        <div class="form-group">
+                                            <label>Remarks</label>
+                                            <textarea class="form-control" formControlName="remarks"></textarea>
+                                        </div>
+                                        <!-- /.form-group -->
+                                    </div>
+                                    <!-- /.col -->
+                                </div>
+                                <!-- /.row -->
+                                <div class="row">
+                                    <div class="col-12 p-0 text-center">
+                                        <button class="btn btn-block btn-primary login_btn ptr" type="submit">Update </button>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <!-- /.card-body -->
+                        <div class="card-footer">
+                            Above Details Management for cordinator Details only
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.row -->
+
+
+        </div>
+        <!--/. container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>

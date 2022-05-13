@@ -1,0 +1,150 @@
+<app-header></app-header>
+<div class="app-loader" *ngIf="loader"></div>
+<app-popup (sendCount)='display($event)'></app-popup>
+
+<div class="content-wrapper" style="min-height: 486px;">
+    <div class="app-content"></div>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <!-- Info boxes -->
+            <div class="row">
+                <!-- fix for small devices only -->
+                <div class="clearfix hidden-md-up"></div>
+
+                <div class="col-12">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title"> Staff Expense</h3>
+
+                            <div class="card-tools">
+                                <!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button> -->
+                                <button type="button" class="btn btn-tool" routerLink="/staff-expense"><i
+                                        class="fas fa-times"></i></button>
+                            </div>
+                        </div>
+                        <!-- /.card-header -->
+                        <form [formGroup]="expenseForm" (ngSubmit)="staffexpense(expenseForm.value)">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <!-- /.form-group -->
+                                        <div class="form-group">
+                                            <label>Staff ID</label>
+                                            <select class="form-control" id="employeeid" formControlName="staffid"
+                                                class="form-control" name="employeeid">
+                                                <option value="" disabled="disabled">Select</option>
+                                                <option *ngFor="let staff of staff_dropdown" [value]="staff.id">
+                                                    {{staff.uid}}- {{staff.fname}}
+                                                </option>
+                                            </select>
+                                            <!-- <input type="number" id="employeeid"  formControlName="staffid" class="form-control" name="employeeid"> -->
+                                        </div>
+                                        <p class="has-error"
+                                            *ngIf="!expenseForm.controls['staffid'].valid&&isSubmitted">Please select
+                                            staff id </p>
+                                        <!-- /.form-group -->
+                                    </div>
+                                    <div class="col-md-6">
+                                        <!-- /.form-group -->
+                                        <div class="form-group">
+                                            <label>Patient ID</label>
+                                            <select class="form-control" id="patientid" formControlName="patientid"
+                                                class="form-control" name="patientid">
+                                                <option value="" disabled="disabled">Select</option>
+                                                <option *ngFor="let patient of patient_dropdown" [value]="patient.id">
+                                                    {{patient.uid}}- {{patient.fname}}
+                                                </option>
+                                            </select>
+                                            <!-- <input type="number" id="patientid" formControlName="patientid" class="form-control" name="patientid"> -->
+                                        </div>
+                                        <p class="has-error"
+                                            *ngIf="!expenseForm.controls['patientid'].valid&&isSubmitted">Please select
+                                            patient id </p>
+                                        <!-- /.form-group -->
+                                    </div>
+
+
+
+                                    <div class="col-md-6">
+                                        <!-- /.form-group -->
+                                        <div class="form-group picker_dob">
+                                            <label>Expense Date </label>
+
+
+
+
+                                            <input angular-mydatepicker class="form-control" id="expense_date"
+                                                formControlName="expense_date" placeholder="Select Date"
+                                                name="expense_date" [(ngModel)]="expense_date"
+                                                [options]="myDatePickerOptions" #dp="angular-mydatepicker"
+                                                (click)="dp.toggleCalendar()" (dateChanged)="onDateChanged($event)" />
+
+                                            <!-- <input type="date" class="form-control" name="dob"> -->
+                                        </div>
+                                        <p class="has-error"
+                                            *ngIf="!expenseForm.controls['expense_date'].valid&&isSubmitted">Please
+                                            select expense date</p>
+                                        <!-- /.form-group -->
+                                    </div>
+
+
+                                    <!-- /.col -->
+
+                                    <div class="col-md-6">
+                                        <!-- /.form-group -->
+                                        <div class="form-group ">
+                                            <label>Amount</label>
+                                            <input type="number" placeholder="Enter Expense Amount"
+                                                formControlName="expense" class="form-control">
+                                            <!-- <input type="date" class="form-control" name="dob"> -->
+                                        </div>
+                                        <p class="has-error"
+                                            *ngIf="!expenseForm.controls['expense'].valid&&isSubmitted">Please enter
+                                            expense amount
+                                        </p>
+                                        <!-- /.form-group -->
+                                    </div>
+                                    <!-- /.col -->
+                                    <!-- /.col -->
+                                    <div class="col-md-6">
+                                        <!-- /.form-group -->
+                                        <div class="form-group">
+                                            <label>Remarks </label>
+                                            <textarea class="form-control" placeholder="Type here staff expense remarks"
+                                                formControlName="remarks"></textarea>
+
+                                            <!-- <input type="date" class="form-control" name="dob"> -->
+                                        </div>
+
+                                        <!-- /.form-group -->
+                                    </div>
+
+
+                                </div>
+                                <!-- /.row -->
+                                <div class="row">
+                                    <div class="col-12 p-0 text-center">
+                                        <button class="btn btn-block btn-primary login_btn ptr" type="submit">Submit
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <!-- /.card-body -->
+                        <div class="card-footer">
+                            Above Details creation for staff Expense only
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.row -->
+
+
+        </div>
+        <!--/. container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>

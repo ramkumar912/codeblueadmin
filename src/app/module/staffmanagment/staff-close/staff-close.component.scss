@@ -1,0 +1,63 @@
+.card-tools{
+    float: left;
+}
+
+.add{
+   margin-left: 10px;
+   height: 36.6px; 
+}
+.card-title{
+    padding: 10px 0px;
+    font-weight: 600;
+}
+.card-header{
+    border-bottom: inherit !important;
+    padding-bottom: 0px !important;
+}
+.card-footer{
+    padding: 10px 0px;
+    background-color: inherit !important;
+}
+.pagination-sm .page-link{
+    font-size: 14px;
+}
+.detail-left{
+    float: left;
+    text-align: left;
+}
+.detail-right{
+    float: right;
+    text-align: right;
+}
+.export{
+    float: left;
+    padding-left: 10px;
+    img{
+        width: 30px;
+        text-align: right;
+    }
+}
+
+.date_picker p{
+    margin: 0;
+    font-weight: 600;
+    float: left;
+    width: 30%;
+    padding: 6px 0px;
+    text-align: center;
+}
+
+.date_picker input{
+    float: right;
+    width: 70%;
+}
+.date_picker {
+    float: left;
+    text-align: left;
+}
+.go-btn{
+    float: left;
+    padding-left: 10px;
+}
+
+

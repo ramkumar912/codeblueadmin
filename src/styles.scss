@@ -1,0 +1,192 @@
+/* You can add global styles to this file, and also import other style files */
+body,html{
+    font-family: 'Open Sans', sans-serif;
+    overflow-x: hidden;
+    font-size: 14px;
+    background: #f4f6f9;
+    color: #6c757d;
+}
+.ptr{
+    cursor: pointer;
+}
+.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover{
+    color: #6c757d;
+    
+}
+.navbar-light .navbar-nav .nav-link{
+    color: #6c757d;
+}
+.form-control, .btn{
+    font-size: 14px;
+}
+.info-box{
+    cursor: pointer;
+}
+.btn-primary{
+    background-color: #005fcd;
+    border-color: #005fcd;
+}
+
+.layout-navbar-fixed .wrapper .brand-link 
+    {
+    text-align: center;
+}
+.layout-navbar-fixed .wrapper .brand-link  .logo_bg{
+    background: #6d6d6d69;
+}
+.content-header h1{
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 600;    
+    padding-top: 6px;
+
+}
+
+.nav-sidebar .nav-item>.nav-link {
+    margin-bottom: 0.9rem;
+}
+
+.input-group-sm>.custom-select, .input-group-sm>.form-control:not(textarea) {
+    height: calc(1.8125rem + 11px);
+}
+
+.input-group-sm>.custom-select, .input-group-sm>.form-control, .input-group-sm>.input-group-append>.btn, .input-group-sm>.input-group-append>.input-group-text, .input-group-sm>.input-group-prepend>.btn, .input-group-sm>.input-group-prepend>.input-group-text {
+    padding: .25rem 0.9rem;
+}
+.picker{
+    position: relative; 
+}
+.picker_icon{
+    position: relative;
+}
+.picker::after{
+    background-image: url("https://codebluehomecare.com/admin/assets/images/calender.png");
+    background-repeat: no-repeat;
+    position: absolute;
+    content: '';
+    width: 30px;
+    height: 30px;
+    z-index: 1;
+    right: 0;
+    top: 4px;
+}
+.app-content{
+    margin-top: 85px;
+}
+
+.picker_dob{
+    position: relative;
+    z-index: 1;
+}
+
+.picker_dob::after{
+    background-image: url("https://codebluehomecare.com/admin/assets/images/calender.png");
+    background-repeat: no-repeat;
+    position: absolute;
+    content: '';
+    width: 30px;
+    height: 30px;
+    z-index: 999999;
+    right: 0;
+    top: 32px;
+}
+.picker_clock{
+    position: relative;
+    z-index: 1;
+}
+
+.picker_clock::after{
+    background-image: url("https://codebluehomecare.com/admin/assets/images/clock.png");
+    background-repeat: no-repeat;
+    position: absolute;
+    content: '';
+    width: 29px;
+    height: 51px;
+    z-index: 999999;
+    right: 0;
+    top: 35px;
+    background-size: 20px;
+}
+
+.card-body>.table>thead>tr>td, .card-body>.table>thead>tr>th {
+    border-top-width: 0;
+    font-size: 13px;
+}
+.has-error {
+    color: red;
+    display: block;
+    float: left;
+    width: 100%;
+    position: absolute;
+    top: 47px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+pagination-controls.pagination.pac_pagenation {
+    float: right;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+.ngx-pagination{
+    margin: 10px 0px;
+}
+.ngx-pagination .current {
+   background: #005fcd !important;
+}
+
+.table thead th {
+    background-color: #6f6f6f !important;
+    color: #fff;
+}
+.textarea_top{
+    top: 88px !important;
+}
+
+.z-0{
+    z-index: 0;
+}
+.login_btn{
+    display: inline-block;
+    border-radius: 0px;
+    text-transform: uppercase;
+    width: auto !important;
+}
+.clear{
+    float: right;
+    text-align: right;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+.form-group {
+    margin-bottom: 1.5rem !important;
+}
+
+.btn.btn-flat{
+    margin-right: 5px;
+}
+// .ekko-lightbox .modal-dialog{
+//     max-width: 500px !important;
+//     float: left;
+// }
+
+
+// .ekko-lightbox .img-fluid {
+//     max-width: 100%;
+//     height: auto;
+//     width: auto !important;
+//     margin: 0px auto !important;
+//     display: block !important;
+// }
+.content-header {
+    padding: 38px .5rem 15px .5rem;
+}
+
+.main-header .nav-link {
+  
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 600;
+}

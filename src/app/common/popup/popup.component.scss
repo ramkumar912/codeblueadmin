@@ -1,0 +1,148 @@
+.modal p.has-error{
+    color:red !important;
+    top: 52px;
+    font-size: 11px !important;
+}
+.form-group{
+    position: relative;
+}
+.modal{
+    opacity: inherit !important;
+    display: inherit !important;
+    background: #000000ad;
+    z-index: 9999999999;
+}
+.modal-body p{
+    padding: 10px 0px !important;
+    color: #5f5f62 !important;
+    font-size: 16px !important;
+ 
+}
+.modal.fade .modal-dialog{
+    -webkit-transform: translate(0,0px) !important; 
+}
+.modal-header {
+    padding: 10px 10px;
+}
+.modal-title {
+    font-size: 14px !important;
+    margin-bottom: 0 !important;
+    font-weight: 600 !important;
+}
+button.log{
+    width: 100px;
+    display: inline;
+    margin: 0px 10px;
+    background-color: #002c5f;
+    border: inherit !important;
+}
+.form-group.text-center {
+    margin-bottom: 0px;
+}
+.modal-dialog.link_table {
+    max-width: 700px !important;
+}
+.link_close button{
+    padding-right: 12px;
+}
+.table thead th {
+    background: #4e4e4e;
+    color: #fff;
+    font-size: 12px;
+}
+table.table.table-striped {
+    border: 1px solid #ccc;
+}
+
+.form-group.row {
+    margin-bottom: 12px !important;
+}
+.form-group.lal_text {
+    text-align: left;
+    padding-left: 50px;
+}
+.user_data{
+    margin: 0px auto;
+    display: block;
+    text-align: left;
+    padding-left: 20px;
+    font-size: 14px;
+    width: 100%;
+    float: left;
+    span{
+        font-size: 13px;
+    }
+}
+label.text-right {
+    font-size: 14px;
+}
+// input[type="file"] { 
+//     z-index: -1;
+//     position: absolute;
+//     opacity: 0;
+//   }
+  
+  input:focus + label {
+    outline: 2px solid;
+  }
+  .uploa{
+    background: #d61618;
+    color: #fff;
+    font-size: 14px;
+    padding: 5px 20px;
+    border-radius: 5px;
+    text-align: center
+  }
+
+  .uploadfile{
+      width: 100%;
+      float: left;
+      button{
+        font-size: 12px;
+        background: #fff;
+        width: 100%;
+        padding: 5px 20px;
+        border-radius: 5px;
+      }
+ 
+  }
+  .excelred {
+    float: right;
+}
+.filename{
+    font-size: 12px;
+    float: left;
+    text-align: left;
+    padding-left: 17px;
+}
+.import{
+    background: #d61618 !important;
+    color: #fff;
+    border: 0px;
+    height: 39px;
+}
+
+.error_bg{
+    color:#d61618;
+}
+
+// button.btn.btn-primary.log.error_btn {
+//     background: #d61618 !important;
+// }
+
+.learning_body{
+    height: 520px;
+    overflow-y: scroll;
+}
+
+.isdeletemodal{
+     z-index: 9999!important;
+}       
+
+tr.bg_black th {
+    text-transform: capitalize;
+}
+
+.table-bordered td, .table-bordered th {
+   font-size: 13px;
+}

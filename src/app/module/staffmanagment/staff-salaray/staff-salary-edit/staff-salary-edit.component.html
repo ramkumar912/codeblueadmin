@@ -1,0 +1,161 @@
+<app-header></app-header>
+
+<div class="app-loader" *ngIf="loader"></div>
+<app-popup (sendCount)='display($event)'></app-popup>
+<div class="content-wrapper" style="min-height: 486px;">
+    <div class="app-content"></div>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <!-- Info boxes -->
+            <div class="row">
+                <!-- fix for small devices only -->
+                <div class="clearfix hidden-md-up"></div>
+
+                <div class="col-12">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title"> Staff Salary Update</h3>
+
+                            <div class="card-tools">
+                                <!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button> -->
+                                <button type="button" class="btn btn-tool" routerLink="/staff-salary"><i
+                                        class="fas fa-times"></i></button>
+                            </div>
+                        </div>
+                        <!-- /.card-header -->
+                        <form [formGroup]="staffsalaryForm" (ngSubmit)="staffsalary(staffsalaryForm.value)">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <!-- /.form-group -->
+                                    <div class="form-group">
+                                        <label>Staff ID</label>
+                                        <input type="text" id="staffid" class="form-control" name="staffid" formControlName="staffid"  disabled>
+                                    </div>                                 
+                                </div>
+                                <div class="col-md-3">
+                                    <!-- /.form-group -->
+                                    <div class="form-group">
+                                        <label>Patient ID</label>
+                                        <input type="text" id="patientid" class="form-control" name="patientid" formControlName="patientid" disabled>
+                                    </div>                                 
+                                </div>
+
+                                <div class="col-md-3">
+                                    <!-- /.form-group -->
+                                    <div class="form-group picker_dob">
+                                        <label>Assign Date </label>
+                                        <input type="text" class="form-control" name="assigndate" formControlName="assign_date" disabled>
+                              
+                                    </div>
+                                    <!-- /.form-group -->
+                                </div>
+
+                                <div class="col-md-3">
+                                    <!-- /.form-group -->
+                                    <div class="form-group">
+                                        <label>Assign Time </label>
+                                        <input type="text" class="form-control" name="assign_time" formControlName="assign_time" disabled>
+                              
+                                    </div>
+                                    <!-- /.form-group -->
+                                </div>
+                                <div class="col-md-3">
+                                    <!-- /.form-group -->
+                                    <div class="form-group picker_dob">
+                                        <label>From Date </label>
+
+                               
+
+
+                                        <input angular-mydatepicker class="form-control" id="fromdate"
+                                            placeholder="Select from date" name="fromdate" [(ngModel)]="fromdate" (dateChanged)="onFromDateChanged($event)" formControlName="fromdate" [options]="myDatePickerOptions_sod" #dp="angular-mydatepicker" (click)="dp.toggleCalendar()"   />
+
+                                            <p class="has-error" *ngIf="!staffsalaryForm.controls['fromdate'].valid&&isSubmitted">Please select from date</p>
+                                    </div>
+                                    <!-- /.form-group -->
+                                </div>
+
+                                <div class="col-md-3">
+                                    <!-- /.form-group -->
+                                    <div class="form-group picker_dob">
+                                        <label>To Date </label>
+                                        <input angular-mydatepicker class="form-control" id="todate"
+                                            placeholder="Select To Date" name="todate" [(ngModel)]="todate" formControlName="todate" (dateChanged)="onTodatechanged($event)" [options]="myDatePickerOptions_eod"
+                                             #dp1="angular-mydatepicker" (click)="dp1.toggleCalendar()" />                                    
+                                    </div>
+                                    <p class="has-error" *ngIf="!staffsalaryForm.controls['todate'].valid&&isSubmitted">Please select to date</p>
+                                </div>
+                              
+                                <div class="col-md-3">
+                                    <!-- /.form-group -->
+                                    <div class="form-group ">
+                                        <label>Total Days</label>
+                                        <input type="number" class="form-control" formControlName="total_days" [(ngModel)]="totaldays"  (input)="ontotaldays($event.target.value)">                                   
+                                    </div>
+                                    <p class="has-error" *ngIf="!staffsalaryForm.controls['total_days'].valid&&isSubmitted">Please calculate total days</p>
+                                </div>  <!-- /.col -->
+                                <div class="col-md-3 picker_clock">
+                                    <!-- /.form-group -->
+                                    <div class="form-group ">
+                                        <label>Close Time</label>
+                                        <input type="text" class="form-control" formControlName="stime" (click)="open($event)">                                        
+                                    </div>
+                                    <p class="has-error" *ngIf="!staffsalaryForm.controls['stime'].valid&&isSubmitted">Please enter close time</p>  
+                                </div>
+                                <!-- /.col -->
+                                <div class="col-md-3">
+                                    <!-- /.form-group -->
+                                    <div class="form-group ">
+                                        <label>Amount Per Day</label>
+                                        <input type="number" class="form-control" formControlName="salaryperday" [(ngModel)]="salary_per_day"  (input)="onSalary($event.target.value)">                                      
+                                    </div>
+                                    <p class="has-error" *ngIf="!staffsalaryForm.controls['salaryperday'].valid&&isSubmitted">Please enter per day salary</p>  
+                                </div>
+                                <!-- /.col -->
+                                <div class="col-md-3">
+                                    <!-- /.form-group -->
+                                    <div class="form-group ">
+                                        <label>Total Salary Amount</label>
+                                        <input type="number" class="form-control"  formControlName="salary"  [(ngModel)]="totalsalary">                                    
+                                    </div>
+                                    <p class="has-error" *ngIf="!staffsalaryForm.controls['salary'].valid&&isSubmitted">Please calculate salary</p>                      
+                                </div>
+                                <!-- /.col -->
+
+                                <div class="col-md-3">                                
+                                    <div class="form-group">
+                                        <label>Remarks </label>                                       
+                                        <input type="text" class="form-control"  formControlName="remarks" >   
+                                    </div>
+                                 
+                                </div>
+
+
+                            </div>
+                            <!-- /.row -->
+                            <div class="row">
+                                <div class="col-12 p-0 text-center">
+                                    <button class="btn btn-block btn-primary login_btn ptr" type="submit">Update </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                        <!-- /.card-body -->
+                        <div class="card-footer">
+                            Above Details creation for staff salary Details only
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.row -->
+
+
+        </div>
+        <!--/. container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>

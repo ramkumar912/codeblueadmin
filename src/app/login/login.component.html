@@ -1,0 +1,53 @@
+<div class="app-loader" *ngIf="loader"></div>
+<div class="login-page" style="min-height: 512.391px;">
+<div class="login-box">
+    
+    <!-- /.login-logo -->
+    <div class="card">
+      <div class="card-body login-card-body">
+        <p class="login-box-msg">
+            <img src="assets/images/logo.png" alt="login">
+        </p>
+  
+        <form   [formGroup]="logForm" (ngSubmit)="login(logForm.value)">
+          <div class="input-group mb-3 mt-4">
+            <input type="email" class="form-control" placeholder="Username"  name="username" formControlName = "username" autocomplete="off" (click)="enterkey($event)"> 
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-user"></span>
+              </div>
+            </div>
+            <p class="has-error" *ngIf="!logForm.controls['username'].valid&&isSubmitted">Please enter username
+            </p>
+           
+          </div>
+          <div class="input-group mb-3 mt-4">
+            <input [type]="hide ? 'password' : 'text'" class="form-control pass_right" placeholder="Password" name="password" formControlName = "password" autocomplete="off" (click)="enterkey($event)">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-lock"></span>
+              </div>
+            </div>
+            <div class="view_password" (click)="showpassword()" *ngIf="hide">
+              <img src="assets/images/visibility.png" alt="view password" class="view_eye" >            
+            </div>
+            <div class="view_password" (click)="showpassword()"  *ngIf="!hide">             
+              <img src="assets/images/eye.png" alt="view password" class="view_eye">
+            </div>
+            <p class="has-error" *ngIf="!logForm.controls['password'].valid&&isSubmitted">Please enter password
+            </p>
+            <p class="has-error" *ngIf="showerror">{{errMsg}}</p>
+          </div>
+         <div class="input-group mb-3 mt-4">
+          <button class="btn btn-block btn-primary login_btn ptr" type="submit">Login <span class="fas fa-sign-in-alt"></span></button>
+        
+         </div>
+        </form>
+  
+  
+        
+      </div>
+   
+    </div>
+  </div>
+</div>
